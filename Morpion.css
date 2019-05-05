@@ -1,0 +1,57 @@
+body{
+    background-image: url("persona morgana.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.first_section{
+    text-align:center;
+    padding-top: 18%;
+}
+
+.second_section{
+    text-align:center;
+    padding-top: 18%;
+}
+
+#first_button{
+    width: 300px; 
+    height: 100px;
+    background-color: yellow;
+}
+
+#second_button{
+    width: 300px; 
+    height: 100px;
+    background-color: yellow;
+}
+
+.audio{
+    display: none;
+}
+
+#Jeu div {
+    width: 500px; margin: auto; clear: both;
+}
+
+#Jeu button {
+    width: 150px;
+    height: 150px;
+    font-weight: bold;
+    font-size: 50px;
+    margin: 8px;
+    float: left;
+    color: blue;
+}
+
+#StatutJeu {
+    color: blue;
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#pied {
+    text-align: center;
+    font-size: 18px;
+}
