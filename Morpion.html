@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Morpion</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="Morpion.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var playerwin = document.querySelector('#audio');
+                var playerequality = document.querySelector('#audioo');
+                var first_user = document.querySelector('#first_section');
+                var first_userr = document.querySelector('#firsttext');
+                var second_userr = document.querySelector('#secondtext');
+                var second_user = document.querySelector('#second_section');
+                var morpion = document.querySelector('.container');
+                var first_button = document.querySelector('#first_button');
+                var second_button = document.querySelector('#second_button');
+
+
+                first_user.style.display = 'block';
+                second_user.style.display = 'none';
+                morpion.style.display = 'none';
+
+                first_button.onclick = function() { 
+                    first_user.style.display = 'none';
+                    morpion.style.display = 'block';
+                }
+
+                second_button.onclick = function() { 
+                    first_user.style.display = 'none';
+                    second_user.style.display = 'none';
+                    morpion.style.display = 'block';
+                }
+
+                var errors = []
+
+                
+                
+
+                function estValide(button)
+                {
+                    return button.innerHTML.length == 0;
+                }
+
+                function setSymbol(btn, symbole)
+                {
+                    btn.innerHTML = symbole;
+                }
+
+                function rechercherVainqueur(cases, joueurs, tour)
+                {
+                    if (cases[0].innerHTML == joueurs[tour] &&
+                        cases[1].innerHTML == joueurs[tour] &&
+                        cases[2].innerHTML == joueurs[tour])
+                    {
+                        cases[0].style.backgroundColor = "green";
+                        cases[1].style.backgroundColor = "green";
+                        cases[2].style.backgroundColor = "green";
+                            setInterval(function () {
+                                cases[0].style.WebkitTransitionDuration='3600s';
+                                cases[0].style.webkitTransform = 'rotate(999999deg)';
+                                cases[1].style.WebkitTransitionDuration='3600s';
+                                cases[1].style.webkitTransform = 'rotate(999999deg)';
+                                cases[2].style.WebkitTransitionDuration='3600s';
+                                cases[2].style.webkitTransform = 'rotate(999999deg)';
+                            }, 100);
+                        return true;
+                    }
+
+                    if (cases[3].innerHTML == joueurs[tour] &&
+                        cases[4].innerHTML == joueurs[tour] &&
+                        cases[5].innerHTML == joueurs[tour])
+                    {
+                        cases[3].style.backgroundColor = "green";
+                        cases[4].style.backgroundColor = "green";
+                        cases[5].style.backgroundColor = "green";
+                        setInterval(function () {
+                                cases[3].style.WebkitTransitionDuration='3600s';
+                                cases[3].style.webkitTransform = 'rotate(999999deg)';
+                                cases[4].style.WebkitTransitionDuration='3600s';
+                                cases[4].style.webkitTransform = 'rotate(999999deg)';
+                                cases[5].style.WebkitTransitionDuration='3600s';
+                                cases[5].style.webkitTransform = 'rotate(999999deg)';
+                            }, 100);
+                        return true;
+                    }
+
+                    if (cases[6].innerHTML == joueurs[tour] &&
+                        cases[7].innerHTML == joueurs[tour] &&
+                        cases[8].innerHTML == joueurs[tour])
+                    {
+                        cases[6].style.backgroundColor = "green";
+                        cases[7].style.backgroundColor = "green";
+                        cases[8].style.backgroundColor = "green";
+                        setInterval(function () {
+                                cases[6].style.WebkitTransitionDuration='3600s';
+                                cases[6].style.webkitTransform = 'rotate(999999deg)';
+                                cases[7].style.WebkitTransitionDuration='3600s';
+                                cases[7].style.webkitTransform = 'rotate(999999deg)';
+                                cases[8].style.WebkitTransitionDuration='3600s';
+                                cases[8].style.webkitTransform = 'rotate(999999deg)';
+                            }, 100);
+                        return true;
+                    }
+
+                    if (cases[0].innerHTML == joueurs[tour] &&
+                        cases[3].innerHTML == joueurs[tour] &&
+                        cases[6].innerHTML == joueurs[tour])
+                    {
+                        cases[0].style.backgroundColor = "green";
+                        cases[3].style.backgroundColor = "green";
+                        cases[6].style.backgroundColor = "green";
+                        setInterval(function () {
+                                cases[0].style.WebkitTransitionDuration='3600s';
+                                cases[0].style.webkitTransform = 'rotate(999999deg)';
+                                cases[3].style.WebkitTransitionDuration='3600s';
+                                cases[3].style.webkitTransform = 'rotate(999999deg)';
+                                cases[6].style.WebkitTransitionDuration='3600s';
+                                cases[6].style.webkitTransform = 'rotate(999999deg)';
+                            }, 100);
+                        return true;
+                    }
+
+                    if (cases[1].innerHTML == joueurs[tour] &&
+                        cases[4].innerHTML == joueurs[tour] &&
+                        cases[7].innerHTML == joueurs[tour])
+                    {
+                        cases[1].style.backgroundColor = "green";
+                        cases[4].style.backgroundColor = "green";
+                        cases[7].style.backgroundColor = "green";
+                        setInterval(function () {
+                                cases[1].style.WebkitTransitionDuration='3600s';
+                                cases[1].style.webkitTransform = 'rotate(999999deg)';
+                                cases[4].style.WebkitTransitionDuration='3600s';
+                                cases[4].style.webkitTransform = 'rotate(999999deg)';
+                                cases[7].style.WebkitTransitionDuration='3600s';
+                                cases[7].style.webkitTransform = 'rotate(999999deg)';
+                            }, 100);
+                        return true;
+                    }
+
+                    if (cases[2].innerHTML == joueurs[tour] &&
+                        cases[5].innerHTML == joueurs[tour] &&
+                        cases[8].innerHTML == joueurs[tour])
+                    {
+                        cases[2].style.backgroundColor = "green";
+                        cases[5].style.backgroundColor = "green";
+                        cases[8].style.backgroundColor = "green";
+                        setInterval(function () {
+                                cases[2].style.WebkitTransitionDuration='3600s';
+                                cases[2].style.webkitTransform = 'rotate(999999deg)';
+                                cases[5].style.WebkitTransitionDuration='3600s';
+                                cases[5].style.webkitTransform = 'rotate(999999deg)';
+                                cases[8].style.WebkitTransitionDuration='3600s';
+                                cases[8].style.webkitTransform = 'rotate(999999deg)';
+                            }, 100);
+                        return true;
+                    }
+
+                    if (cases[0].innerHTML == joueurs[tour] &&
+                        cases[4].innerHTML == joueurs[tour] &&
+                        cases[8].innerHTML == joueurs[tour])
+                    {
+                        cases[0].style.backgroundColor = "green";
+                        cases[4].style.backgroundColor = "green";
+                        cases[8].style.backgroundColor = "green";
+                        setInterval(function () {
+                                cases[0].style.WebkitTransitionDuration='3600s';
+                                cases[0].style.webkitTransform = 'rotate(999999deg)';
+                                cases[4].style.WebkitTransitionDuration='3600s';
+                                cases[4].style.webkitTransform = 'rotate(999999deg)';
+                                cases[8].style.WebkitTransitionDuration='3600s';
+                                cases[8].style.webkitTransform = 'rotate(999999deg)';
+                            }, 100);
+                        return true;
+                    }
+
+                    if (cases[2].innerHTML == joueurs[tour] &&
+                        cases[4].innerHTML == joueurs[tour] &&
+                        cases[6].innerHTML == joueurs[tour])
+                    {
+                        cases[2].style.backgroundColor = "green";
+                        cases[4].style.backgroundColor = "green";
+                        cases[6].style.backgroundColor = "green";
+                        setInterval(function () {
+                                cases[2].style.WebkitTransitionDuration='3600s';
+                                cases[2].style.webkitTransform = 'rotate(999999deg)';
+                                cases[4].style.WebkitTransitionDuration='3600s';
+                                cases[4].style.webkitTransform = 'rotate(999999deg)';
+                                cases[6].style.WebkitTransitionDuration='3600s';
+                                cases[6].style.webkitTransform = 'rotate(999999deg)';
+                            }, 100);
+                        return true;
+                    }
+                }
+
+                function matchNul(cases)
+                {
+                    for (var i = 0, len = cases.length; i < len; i++)
+                    {
+                        if (cases[i].innerHTML.length == 0)
+                            return false;
+                    }
+
+                    return true;
+                }
+
+                var Afficheur = function(element)
+                {
+                    var affichage = element;
+
+                    function setText(message)
+                    {
+                        affichage.innerHTML = message;
+                    }
+
+                    return {sendMessage : setText};
+                }
+
+                function afficheur()
+                {
+                    var cases = document.querySelectorAll("#Jeu button");
+                    var joueurs = ['X', 'O'];
+                    var tour = 0;
+                    var jeuEstFini = false;
+                    var afficheur = new Afficheur(document.querySelector("#StatutJeu"));
+
+                    var btn = document.querySelector("button");
+
+                    var firsttext = [];
+
+                    btn.addEventListener("click", function(event){
+                    var player1 = document.querySelector("#firsttext");
+                    var player2 = document.querySelector("#secondtext");
+                    
+                    if (player1.value != "" && player2.value != "") {
+                        firsttext.push(player1.value);
+                        firsttext.push(player2.value);
+                        return firsttext;
+                    }                   
+                    });
+
+                    first_button.addEventListener("click", function(eventt){
+                        var player1 = document.querySelector("#firsttext");
+                        var player2 = document.querySelector("#secondtext");
+                        if (player1.value == "" || player2.value == "") {
+                            eventt.preventDefault();
+                            alert("Tu n'as pas écris le noms des 2 utilisateurs mais la partie pourra quand même démarrer mais le champ vide du joueurs sera marqué undifined");
+                        }
+                    });
+
+                    afficheur.sendMessage("<strong>La partie peut commencer ! <br />  c'est au tour du premier joueur.</strong>");
+                    var fff = document.querySelector('input').value;
+                    for (var i = 0, len = cases.length; i < len; i++)
+                    {
+                        cases[i].addEventListener("click", function()
+                        {
+                            if (jeuEstFini)
+                                return;
+
+                            if (!estValide(this))
+                            {
+                                afficheur.sendMessage("<strong>Case occupée ! <br /> " + firsttext[tour] + " c'est toujours à toi !</strong>");
+
+                            }
+                            else
+                            {
+                                setSymbol(this, joueurs[tour]);
+                                jeuEstFini = rechercherVainqueur(cases, joueurs, tour);
+
+                                if(jeuEstFini)
+                                {
+                                    afficheur.sendMessage("<strong> " + firsttext[tour] + " a gagné ! </strong><br /> <a href=\"Morpion.html\">Rejouer</a>");
+                                    playerwin.play();
+                                    return;                           
+                                }
+
+                                if (matchNul(cases))
+                                {
+                                    afficheur.sendMessage("<strong>Match Nul ! </strong><br/> <a href=\"Morpion.html\">Rejouer</a>");
+                                    playerequality.play();
+                                    cases[0].style.backgroundColor = "red";
+                                    cases[1].style.backgroundColor = "red";
+                                    cases[2].style.backgroundColor = "red";
+                                    cases[3].style.backgroundColor = "red";
+                                    cases[4].style.backgroundColor = "red";
+                                    cases[5].style.backgroundColor = "red";
+                                    cases[6].style.backgroundColor = "red";
+                                    cases[7].style.backgroundColor = "red";
+                                    cases[8].style.backgroundColor = "red";
+                                    return;
+                                }
+
+                                tour++;
+                                tour = tour % 2;
+                                afficheur.sendMessage("<strong>" + firsttext[tour] + ", c'est à toi !<strong>");
+                            }
+                        });
+                    }
+                }
+
+                afficheur();
+                
+                var getHttpRequest = function () {
+                var httpRequest = false;
+
+                if (window.XMLHttpRequest) { // Mozilla, Safari,...
+                    httpRequest = new XMLHttpRequest();
+                    if (httpRequest.overrideMimeType) {
+                    httpRequest.overrideMimeType('text/xml');
+                    }
+                }
+                else if (window.ActiveXObject) { // IE
+                    try {
+                    httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                    }
+                    catch (e) {
+                    try {
+                        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {}
+                    }
+                }
+
+                if (!httpRequest) {
+                    alert('Abandon :( Impossible de créer une instance XMLHTTP');
+                    return false;
+                }
+
+                return httpRequest
+                }
+
+                var httpRequest = getHttpRequest()
+
+                httpRequest.onreadystatechange = function() {
+                    if (httpRequest.readyState === 4) {  
+                        document.querySelector('#result').onclick = function(eventt){    
+                            sweetAlert("Clique sur OK pour...", "afficher le nombre de velib", "success");
+                            document.querySelector('#result').innerHTML = httpRequest.responseText   
+                        };
+                        
+                    }
+                }
+                httpRequest.open('GET', 'https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=station_id%3D37791&rows=1', true)
+                httpRequest.send()
+            });
+        </script>
+    </head>
+    <body>
+        <section id="first_section" class="first_section">
+            <input type="text" placeholder="Nom du premier joueur" style="color: blue; font-size: 120px;" size="17" id="firsttext" class="toutou"><br>
+            <input type="text" placeholder="Nom du deuxième joueur" style="color: blue; font-size: 120px;" size="17" id="secondtext" class="toutou"><br>
+            <button type="button" id="first_button">Suivant</button>
+        </section>
+
+        <section id="second_section" class="second_section">
+            
+            <button type="button" id="second_button">Suivant</button>
+        </section>
+
+        <audio controls id="audio" hidden>
+                <source src="Persona 5 Triumph.mp3">
+        </audio>
+
+        <audio controls id="audioo" hidden>
+            <source src="bruit de pet.mp3"> 
+        </audio>
+        
+        <div class="container">
+            <section class="third_section">
+                <div id="Jeu" style="width: 600px; height: 600px; overflow: auto; margin: auto; padding: 10px; ">
+                    <div>
+                        <button type="button" class="button"></button>
+                        <button type="button" class="button"></button>
+                        <button type="button" class="button"></button>
+                    </div>
+                    <div>
+                        <button type="button" class="button"></button>
+                        <button type="button" class="button"></button>
+                        <button type="button" class="button"></button>
+                    </div>
+                    <div>
+                        <button type="button" class="button"></button>
+                        <button type="button" class="button"></button>
+                        <button type="button" class="button"></button>
+                    </div>
+
+                    <div id="StatutJeu"></div>
+                </div>
+            </section>
+
+    <script>
+        
+            </script>
+        </div>
+        <button id="result">Afficher le nombre de vélib disponible à République</button>
+    </body>
+</html>
