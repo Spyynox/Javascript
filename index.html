@@ -272,14 +272,14 @@
 
                                 if(jeuEstFini)
                                 {
-                                    afficheur.sendMessage("<strong> " + firsttext[tour] + " a gagné ! </strong><br /> <a href=\"Morpion.html\">Rejouer</a>");
+                                    afficheur.sendMessage("<strong> " + firsttext[tour] + " a gagné ! </strong><br /> <a href=\"index.html\">Rejouer</a>");
                                     playerwin.play();
                                     return;                           
                                 }
 
                                 if (matchNul(cases))
                                 {
-                                    afficheur.sendMessage("<strong>Match Nul ! </strong><br/> <a href=\"Morpion.html\">Rejouer</a>");
+                                    afficheur.sendMessage("<strong>Match Nul ! </strong><br/> <a href=\"index.html\">Rejouer</a>");
                                     playerequality.play();
                                     cases[0].style.backgroundColor = "red";
                                     cases[1].style.backgroundColor = "red";
@@ -302,49 +302,6 @@
                 }
 
                 afficheur();
-                
-                var getHttpRequest = function () {
-                var httpRequest = false;
-
-                if (window.XMLHttpRequest) { // Mozilla, Safari,...
-                    httpRequest = new XMLHttpRequest();
-                    if (httpRequest.overrideMimeType) {
-                    httpRequest.overrideMimeType('text/xml');
-                    }
-                }
-                else if (window.ActiveXObject) { // IE
-                    try {
-                    httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-                    }
-                    catch (e) {
-                    try {
-                        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    catch (e) {}
-                    }
-                }
-
-                if (!httpRequest) {
-                    alert('Abandon :( Impossible de créer une instance XMLHTTP');
-                    return false;
-                }
-
-                return httpRequest
-                }
-
-                var httpRequest = getHttpRequest()
-
-                httpRequest.onreadystatechange = function() {
-                    if (httpRequest.readyState === 4) {  
-                        document.querySelector('#result').onclick = function(eventt){    
-                            sweetAlert("Clique sur OK pour...", "afficher le nombre de velib", "success");
-                            document.querySelector('#result').innerHTML = httpRequest.responseText   
-                        };
-                        
-                    }
-                }
-                httpRequest.open('GET', 'https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=station_id%3D37791&rows=1', true)
-                httpRequest.send()
             });
         </script>
     </head>
@@ -390,11 +347,6 @@
                     <div id="StatutJeu"></div>
                 </div>
             </section>
-
-    <script>
-        
-            </script>
         </div>
-        <button id="result">Afficher le nombre de vélib disponible à République</button>
     </body>
 </html>
